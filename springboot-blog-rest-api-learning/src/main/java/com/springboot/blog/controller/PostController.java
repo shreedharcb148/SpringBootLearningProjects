@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ public class PostController {
 	// create blog post
 
 	@PostMapping("/create")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto) {
 
 		return new ResponseEntity<PostDto>(postService.createPost(postDto), HttpStatus.CREATED);
@@ -60,6 +62,7 @@ public class PostController {
 
 	
 	@GetMapping("/posts")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public PostResponse getAllPosts(
 			@RequestParam(value="pageNo",defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
 			@RequestParam(value="pageSize",defaultValue=AppConstants.DEFAULT_PAGE_SIZE,required = false) int pageSize,
@@ -77,12 +80,14 @@ public class PostController {
 	}
 
 	@PutMapping("/{id}")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<PostDto> updatePost(@Valid @RequestBody PostDto postDto, @PathVariable(name = "id") long id) {
 		return ResponseEntity.ok(postService.updatePost(postDto, id));
 
 	}
 
 	@DeleteMapping("/{id}")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> deletePost(@PathVariable(name = "id") long id) {
 
 		postService.deletePostById(id);
