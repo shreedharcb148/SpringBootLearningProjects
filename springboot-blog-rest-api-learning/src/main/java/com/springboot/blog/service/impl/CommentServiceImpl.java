@@ -24,6 +24,12 @@ public class CommentServiceImpl implements CommentService{
 	private PostRepository postRepository;
 	
 	
+	
+	public CommentServiceImpl() {
+		super();
+	}
+
+
 	@Autowired
 	public CommentServiceImpl(CommentRepository commentRepository,PostRepository postRepository) {
 		super();
