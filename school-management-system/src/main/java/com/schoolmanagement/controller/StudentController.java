@@ -21,7 +21,7 @@ import com.schoolmanagement.service.StudentService;
 
 
 @RestController
-@RequestMapping("/student/")
+@RequestMapping("/student")
 public class StudentController {
 
 	private StudentService studentService;
@@ -58,7 +58,7 @@ public class StudentController {
 		return this.studentService.deleteStudentById(id);
 	}
 	
-	@GetMapping("find/{name}")
+	@GetMapping("/find/{name}")
 	public List<StudentDto> findByName(@PathVariable String name){
 		return studentService.findByName(name);
 	}
@@ -77,6 +77,17 @@ public class StudentController {
 //	public ResponseEntity<Student> getStudent(@PathVariable("id") int id) {
 //		return new ResponseEntity<Student>(this.studentService.getStudent(id), HttpStatus.FOUND);
 //	}
+	
+	@GetMapping("/findbyfirstname/{firstname}")
+	public StudentDto findFirstByName(@PathVariable("firstname") String name){
+		System.out.println(name);
+		return studentService.findFirstByName(name);
+	}
+	
+	@GetMapping("/findbylastname/{lastname}")
+	public StudentDto findLastByName(@PathVariable("lastname") String name){
+		return studentService.findLastByName(name);
+	}
 	
 	
 }

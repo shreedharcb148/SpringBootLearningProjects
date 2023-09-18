@@ -19,7 +19,9 @@ public interface StudentService {
     
     StudentDto updateStudent(int id,StudentDto studentDto);
     
-    //Student getStudent(int id);
+    StudentDto findFirstByName(String name);
+    
+    StudentDto findLastByName(String name);
     
     
 }

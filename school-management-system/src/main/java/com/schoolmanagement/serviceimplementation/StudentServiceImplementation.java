@@ -117,6 +117,19 @@ public class StudentServiceImplementation implements StudentService {
 		Student student = studentRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Student","id",id));
 		return student;
 	}
+
+	@Override
+	public StudentDto findFirstByName(String name) {
+		Student student = studentRepository.findFirstByName(name);//.orElseThrow(()-> new ResourceNotFoundException("Student","id",id));
+		return mapToDto(student);
+	}
+
+	@Override
+	public StudentDto findLastByName(String name) {
+		Student student = studentRepository.findLastByName(name);//.orElseThrow(()-> new ResourceNotFoundException("Student","id",id));
+		
+		return mapToDto(student);
+	}
 	
 
 	

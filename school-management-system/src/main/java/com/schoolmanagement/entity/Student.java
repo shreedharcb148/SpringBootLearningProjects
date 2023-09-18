@@ -40,7 +40,7 @@ public class Student {
 					joinColumns = {@JoinColumn(name="s_id",referencedColumnName = "id")}, //id of student entity
 					inverseJoinColumns = {@JoinColumn(name="c_id",referencedColumnName = "id")}) //id of course entity
 	
-	@JsonManagedReference
+	//@JsonManagedReference
 	Set<Course> courses;
 	
 	public Student() {

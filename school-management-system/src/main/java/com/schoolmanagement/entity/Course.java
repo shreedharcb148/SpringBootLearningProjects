@@ -31,7 +31,7 @@ public class Course {
 
 	//value for mappedBy attribute should be equal variable used/declared in owner entity here it is Student entity
 	@ManyToMany(mappedBy = "courses" ,fetch = FetchType.LAZY)
-	@JsonBackReference
+	//@JsonBackReference
 	private Set<Student> students;
 	
 	public Course() {
