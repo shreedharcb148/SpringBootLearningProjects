@@ -22,13 +22,13 @@ public class Book {
 	private int prize;
 	
 	@ManyToOne()
-	private String author;
+	private Author author;
 	
 	public Book() {
 		super();
 	}
 
-	public Book(int id, String name, String author, int prize) {
+	public Book(int id, String name, Author author, int prize) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,11 +52,11 @@ public class Book {
 		this.name = name;
 	}
 
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 
