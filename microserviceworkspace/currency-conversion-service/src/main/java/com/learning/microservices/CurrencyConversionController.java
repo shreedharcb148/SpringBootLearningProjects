@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("currency-conversion")
+//@RequestMapping("currency-conversion")
 public class CurrencyConversionController {
 	
 	@Autowired
 	private CurrencyExchangeProxy currencyExchangeProxy;
 	
-	@GetMapping("/from/{from}/to/{to}/quantity/{quantity}")
+	@GetMapping("currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversion calculateCurrencyConversion(
 			@PathVariable("from") String from,
 			@PathVariable("to") String to,
@@ -41,7 +41,7 @@ public class CurrencyConversionController {
 				cc.getEnvironment());
 	}
 	
-	@GetMapping("/feign/from/{from}/to/{to}/quantity/{quantity}")
+	@GetMapping("currency-conversion/feign/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversion calculateCurrencyConversionFeign(
 			@PathVariable("from") String from,
 			@PathVariable("to") String to,
