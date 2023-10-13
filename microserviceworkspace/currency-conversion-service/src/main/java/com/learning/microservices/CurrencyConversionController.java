@@ -41,7 +41,7 @@ public class CurrencyConversionController {
 				cc.getEnvironment());
 	}
 	
-	@GetMapping("currency-conversion/feign/from/{from}/to/{to}/quantity/{quantity}")
+	@GetMapping("currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversion calculateCurrencyConversionFeign(
 			@PathVariable("from") String from,
 			@PathVariable("to") String to,
