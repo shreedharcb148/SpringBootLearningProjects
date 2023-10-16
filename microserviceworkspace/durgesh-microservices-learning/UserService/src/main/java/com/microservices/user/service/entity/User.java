@@ -37,6 +37,9 @@ public class User {
 	@Column(name="ABOUT")
 	private String about;
 	
+	@Column(name="info")
+	private String info;
+	
 	//it will not store/save in database
 	@Transient
 	//@Column(name="RATINGS")
@@ -46,12 +49,14 @@ public class User {
 		super();
 	}
 
-	public User(String userId, String name, String email, String about) {
+	public User(String userId, String name, String email, String about,String info) {
 		super();
 		this.userId = userId;
 		this.name = name;
 		this.email = email;
 		this.about = about;
+		this.info = info;
+		//this.ratings = ratings;
 	}
 
 	public String getUserId() {
@@ -84,6 +89,22 @@ public class User {
 
 	public void setAbout(String about) {
 		this.about = about;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 	
 	

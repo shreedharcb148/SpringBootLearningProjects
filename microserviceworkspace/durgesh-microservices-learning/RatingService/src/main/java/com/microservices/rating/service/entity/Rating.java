@@ -1,9 +1,11 @@
 package com.microservices.rating.service.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//import jakarta.persistence.Column;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+//import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,26 +15,26 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Document("user_ratings")
+@Document("user_ratings")
 
-@Entity
-@Table(name="user_ratings")
+//@Entity
+//@Table(name="user_ratings")
 public class Rating {
 
-	@Id
-	@Column(name="ID")
+	//@Id
+	//@Column(name="ID")
 	private String ratingId;
 	
-	@Column(name="USER_ID")
+	//@Column(name="USER_ID")
 	private String userId;
 	
-	@Column(name="HOTEL_ID")
+	//@Column(name="HOTEL_ID")
 	private String hotelId;
 	
-	@Column(name="RATING")
+	//@Column(name="RATING")
 	private int rating;
 	
-	@Column(name="FEEDBACK")
+	//@Column(name="FEEDBACK")
 	private String feedback;
 
 	public Rating() {

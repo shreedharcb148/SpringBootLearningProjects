@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.microservices.user.service.entity.Rating;
 import com.microservices.user.service.entity.User;
 import com.microservices.user.service.exceptions.ResourceNotFoundException;
 import com.microservices.user.service.repository.UserRepository;
@@ -32,6 +33,7 @@ public class UserServiceImpl implements UserService{
 		//generate unique id
 		String randomUserId = UUID.randomUUID().toString();
 		user.setUserId(randomUserId); 
+		
 		return userRepository.save(user);
 	}
 
@@ -50,12 +52,14 @@ public class UserServiceImpl implements UserService{
 					new ResourceNotFoundException("User with given id is not found on server...!!! : "+userId));
 		
 		//fetch rating of the above userfrom RATING SERVICE
-		//http://localhost:8082/rating/getratingbyuserid/0a084e9d-8657-48b6-b765-f38c116e8626
+		//working url
+		//http://localhost:8082/rating/users/4fad34bd-ea80-45f6-9ac2-a8d3c15bc4c6
 		
-		ArrayList<?> forObject =  restTemplate.getForObject("http://localhost:8082/rating/getratingbyuserid/0a084e9d-8657-48b6-b765-f38c116e8626",
+		@SuppressWarnings("unchecked")
+		ArrayList<Rating> ratingsOfUser =  restTemplate.getForObject("http://localhost:8082/rating/users/"+user.getUserId(),
 				ArrayList.class);
-		logger.info("abcccccccccc");
-		logger.info("{}",forObject);
+		logger.info("{}    :  ",ratingsOfUser);
+		user.setRatings(ratingsOfUser);
 		
 		return user;
 	}
