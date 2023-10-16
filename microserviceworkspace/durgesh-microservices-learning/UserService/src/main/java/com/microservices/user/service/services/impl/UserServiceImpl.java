@@ -17,6 +17,8 @@ import com.microservices.user.service.entity.Hotel;
 import com.microservices.user.service.entity.Rating;
 import com.microservices.user.service.entity.User;
 import com.microservices.user.service.exceptions.ResourceNotFoundException;
+import com.microservices.user.service.externalservices.HotelService;
+import com.microservices.user.service.externalservices.RatingService;
 import com.microservices.user.service.repository.UserRepository;
 import com.microservices.user.service.services.UserService;
 
@@ -30,6 +32,12 @@ public class UserServiceImpl implements UserService{
 	private RestTemplate restTemplate;
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	@Autowired
+	private HotelService hotelService;
+	
+	@Autowired
+	private RatingService ratingService;
 	
 	@Override
 	public User saveUser(User user) {
@@ -74,28 +82,32 @@ public class UserServiceImpl implements UserService{
 		//http://localhost:8082/rating/users/4fad34bd-ea80-45f6-9ac2-a8d3c15bc4c6
 		
 		@SuppressWarnings("unchecked")
-		Rating[] ratingsOfUser =  restTemplate.getForObject("http://localhost:8082/rating/users/"+user.getUserId(),
-				Rating[].class);
+//		Rating[] ratingsOfUser =  restTemplate.getForObject("http://RATING-SERVICE/rating/users/"+user.getUserId(),
+//				Rating[].class);
 		
-		List<Rating> ratings = Arrays.stream(ratingsOfUser).toList();
+		List<Rating> ratingsOfUser = ratingService.getRatingByUserId(user.getUserId());
 		
-		logger.info("{}    :  ",ratingsOfUser);
+		//List<Rating> ratings = Arrays.stream(ratingsOfUser).toList();
+		
+		//logger.info("{}    :  ",ratingsOfUser);
 		
 		List<Rating> ratingList = new ArrayList<>();
-		for(Rating rating : ratings) {
+		for(Rating rating : ratingsOfUser) { 
 			//api call to hotel service
 			
 		
-			ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://localhost:8081/hotels/gethotel/"+rating.getHotelId(), 
-					Hotel.class);
-			Hotel hotel = forEntity.getBody();
+//			ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTEL-SERVICE/hotels/gethotel/"+rating.getHotelId(), 
+//					Hotel.class);
+//			Hotel hotel = forEntity.getBody();
+			
+			Hotel hotel = hotelService.getHotel(rating.getHotelId());
 			//set the hotel to rating
 			rating.setHotel(hotel);
 			
 			//return rating
 			ratingList.add(rating);
 			
-			logger.info("response status code : {} ",forEntity.getStatusCode());
+			//logger.info("response status code : {} ",forEntity.getStatusCode());
 		}
 //		List<Rating> ratingList = Arrays.stream(ratingsOfUser).toList().stream().map(rating -> {
 //			//http://localhost:8081/hotels/gethotel/1d37e0b1-dd56-439f-8c20-14e41056fd7a
