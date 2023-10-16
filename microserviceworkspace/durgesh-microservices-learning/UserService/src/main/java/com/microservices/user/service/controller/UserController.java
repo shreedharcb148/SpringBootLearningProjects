@@ -21,27 +21,32 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	
-	//create user
+
+	// create user
 	@PostMapping("/create_user")
-	public ResponseEntity<User> createUser(@RequestBody User user){
+	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User user2 = userService.saveUser(user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(user2);
 	}
-	
-	//get single user
+
+	// get single user
 	@GetMapping("/getuser/{userId}")
-	public ResponseEntity<User> getSingleUser(@PathVariable("userId") String userId){
-		
+	public ResponseEntity<User> getSingleUser(@PathVariable("userId") String userId) {
+
 		User user = userService.getUser(userId);
 		return ResponseEntity.ok(user);
 	}
-	
-	//get all users
+
+	// get all users
 	@GetMapping("/getallusers")
-	public ResponseEntity<List<User>> getAllUsers(){
-		
+	public ResponseEntity<List<User>> getAllUsers() {
+
 		return ResponseEntity.ok(userService.getAllUsers());
+	}
+
+	@GetMapping("/getuserbyid/{userId}")
+	public ResponseEntity<User> getUserById(@PathVariable("userId") String userId) {
+		User user = userService.findByUserId(userId);
+		return ResponseEntity.ok(user);
 	}
 }

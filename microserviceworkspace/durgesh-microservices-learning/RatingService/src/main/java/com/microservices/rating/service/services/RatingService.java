@@ -10,7 +10,8 @@ public interface RatingService {
 	
 	List<Rating> getAllRatings();
 	
-	List<Rating> getRatingByUserId(String StudentId);
-	
+	List<Rating> getRatingByUserId(String userId);
+				 
 	List<Rating> getRatingByHotelId(String hotelId);
+
 }
