@@ -44,6 +44,8 @@ public class User {
 	@Transient
 	//@Column(name="RATINGS")
 	private List<Rating> ratings = new ArrayList<>();
+	
+	
 
 	public User() {
 		super();
