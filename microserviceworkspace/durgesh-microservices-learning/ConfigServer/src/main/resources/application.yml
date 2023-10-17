@@ -10,10 +10,10 @@ spring:
         bootstrap: true
         git:
           #strict-host-key-checking : false
-          #private-key: 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
+          #private-key: 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
           username: shreedharcb148
-          password: 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
-          #clone-on-start: true
+          password:  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
+          clone-on-start: true
           uri: https://github.com/shreedharcb148/microservices-config
            
          
