@@ -7,14 +7,14 @@ spring:
   cloud:
     config:
       server:
-        bootstrap: true
+        #bootstrap: true
         git:
-          #strict-host-key-checking : false
-          #private-key: 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
+          strict-host-key-checking: false
           username: shreedharcb148
-          password:  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
+          password:  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
           clone-on-start: true
-          uri: https://github.com/shreedharcb148/microservices-config
+          #uri: https://github.com/shreedharcb148/microservices-config
+          uri : file:///C:/Users/WLH1KOR/Desktop/SpringWorkspace/SpringBootLearningProjects/microserviceworkspace/git-localconfig-repo
            
          
     
