@@ -1,0 +1,20 @@
+server:
+  port: 8084
+  
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        git:
+          #strict-host-key-checking : false
+          #private-key: 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
+          username: shreedharcb148
+          password: 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
+          #clone-on-start: true
+          uri: https://github.com/shreedharcb148/microservices-config
+           
+         
+    

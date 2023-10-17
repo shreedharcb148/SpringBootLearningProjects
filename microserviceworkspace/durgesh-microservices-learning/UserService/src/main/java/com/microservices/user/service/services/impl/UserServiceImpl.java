@@ -88,7 +88,6 @@ public class UserServiceImpl implements UserService{
 		List<Rating> ratingsOfUser = ratingService.getRatingByUserId(user.getUserId());
 		
 		//List<Rating> ratings = Arrays.stream(ratingsOfUser).toList();
-		
 		//logger.info("{}    :  ",ratingsOfUser);
 		
 		List<Rating> ratingList = new ArrayList<>();
