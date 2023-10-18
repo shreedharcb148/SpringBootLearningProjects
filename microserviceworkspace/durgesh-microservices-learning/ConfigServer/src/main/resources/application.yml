@@ -7,14 +7,16 @@ spring:
   cloud:
     config:
       server:
-        #bootstrap: true
+        bootstrap: true
         git:
+          #uri: https://github.com/shreedharcb148/microservices-config
+          #clone-on-start: true
           strict-host-key-checking: false
           username: shreedharcb148
           password:  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
-          clone-on-start: true
-          #uri: https://github.com/shreedharcb148/microservices-config
-          uri : file:///C:/Users/WLH1KOR/Desktop/SpringWorkspace/SpringBootLearningProjects/microserviceworkspace/git-localconfig-repo
-           
-         
+          #uri : file:///C:/Users/WLH1KOR/Desktop/SpringWorkspace/SpringBootLearningProjects/microserviceworkspace/durgesh-microservices-learning/microservices-config
+           #actuators configuration
+
+    
+
     
