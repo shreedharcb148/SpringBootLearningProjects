@@ -14,6 +14,8 @@ public interface UserService {
 	
 	User findByUserId(String userId);
 	
+	//User deleteByUserId(String userId);
+	
 	//TODO : delete 
 	//TODO : update
 }
