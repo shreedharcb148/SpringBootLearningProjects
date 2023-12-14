@@ -1,0 +1,18 @@
+
+
+<h3> Assignment 2: Practicing Databinding</h3>
+
+<input 
+type="text"
+    [(ngModel)]="userName"
+    (input)="onUpdateUserName($event)">
+<p>{{userName}}</p>
+
+<!-- <button
+    [disabled]="!allowClear"
+    (click)="onClearInput()">Clear</button> -->
+
+    <!-- === to check the value -->
+    <button
+    [disabled]="userName === ''"
+    (click)="userName = ''">Clear</button>

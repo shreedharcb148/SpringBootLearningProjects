@@ -1,4 +1,37 @@
-<!-- <input type="text",[(ngModel)]="name">
-<p>{{ name }}</p> -->
+<!-- <input type="text">
+<p>{{ name }}</p>
+
+<app-server></app-server>
+<app-server></app-server> -->
+<!-- <dev app-server></dev> -->
+<!-- <dev class="app-server"></dev> -->
+
+<!-- <p> app servers.........</p>
+<app-servers></app-servers> -->
+<!-- <app-servers></app-servers>
+<app-servers></app-servers> -->
+
+<!-- <p>Assignement</p>
+<app-assignment1></app-assignment1> -->
+
+
+<ol>
+    <li>add button with 'display detail'</li>
+    <li>add paragraph</li>
+    <li>toggle display</li>
+    <li>log all button clicks</li>
+    <li>blue bakcground</li>
+</ol>
+<hr>
+<!-- <button (click)="showSecret = !showSecret">display detail</button> -->
+<button (click)="onToggleDetail()">display detail</button>
+<p *ngIf="showSecret">Secret Password = tuna</p>
+<div 
+*ngFor="let logItem of log"
+[ngStyle]="{backgroundColor: logItem>=5 ? 'blue' : 'transparent'}"
+[ngClass]="{'white-text': logItem>=5}">{{logItem}}</div>
+
+
+
 
 

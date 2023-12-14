@@ -6,13 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  name = 'my-first-app';
-  showSecret = false;
-  log = [];
-
-
-  onToggleDetail(){
-    this.showSecret = !this.showSecret;
-    this.log.push(this.log.length + 1);
-  }
+  title = 'basics-project';
 }
